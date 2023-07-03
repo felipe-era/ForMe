@@ -28,25 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btnTryHttp = new Button();
+            rtbResponse = new RichTextBox();
+            btnTryHttp2 = new Button();
             SuspendLayout();
             // 
-            // button1
+            // btnTryHttp
             // 
-            button1.Location = new Point(464, 130);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnTryHttp.Location = new Point(36, 12);
+            btnTryHttp.Name = "btnTryHttp";
+            btnTryHttp.Size = new Size(106, 23);
+            btnTryHttp.TabIndex = 0;
+            btnTryHttp.Text = "Api / HttpMode";
+            btnTryHttp.UseVisualStyleBackColor = true;
+            btnTryHttp.Click += btnTryHttp_Click;
+            // 
+            // rtbResponse
+            // 
+            rtbResponse.Location = new Point(36, 69);
+            rtbResponse.Name = "rtbResponse";
+            rtbResponse.Size = new Size(410, 267);
+            rtbResponse.TabIndex = 1;
+            rtbResponse.Text = "";
+            // 
+            // btnTryHttp2
+            // 
+            btnTryHttp2.Location = new Point(36, 40);
+            btnTryHttp2.Name = "btnTryHttp2";
+            btnTryHttp2.Size = new Size(106, 23);
+            btnTryHttp2.TabIndex = 2;
+            btnTryHttp2.Text = "Api / String";
+            btnTryHttp2.UseVisualStyleBackColor = true;
+            btnTryHttp2.Click += btnTryHttp2_Click;
             // 
             // frmMusicas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(btnTryHttp2);
+            Controls.Add(rtbResponse);
+            Controls.Add(btnTryHttp);
             Name = "frmMusicas";
             Text = "frmMusicas";
             ResumeLayout(false);
@@ -54,6 +77,8 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnTryHttp;
+        private RichTextBox rtbResponse;
+        private Button btnTryHttp2;
     }
 }
