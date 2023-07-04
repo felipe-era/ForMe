@@ -11,59 +11,65 @@ namespace ForMe.Controllers;
 
 internal class SongController
 {
-    public async Task<string> ConectaApiAsync(string strRetorno)
+    public const string APIHTTP = "https://guilhermeonrails.github.io/api-csharp-songs/songs.json";
+
+    /// <summary>
+    /// Conexão com API teste1
+    /// </summary>
+    /// <param name="strRetorno">Utilizada para o retorno</param>
+    /// <returns>Task vazia caso não encontre</returns>
+    public async Task<bool> ConectaApiAsync()
     {
-        strRetorno = string.Empty;
         using (HttpClient client = new HttpClient())
         {
             try
             {
-                HttpResponseMessage httpResponse = await client.GetAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
+                HttpResponseMessage httpResponse = await client.GetAsync(APIHTTP);
                 httpResponse.EnsureSuccessStatusCode(); // Lança uma exceção se a requisição não for bem-sucedida (código de status 2xx)
 
                 if (httpResponse.IsSuccessStatusCode)
                 {
-                    // Lê o conteúdo da resposta como uma string
-                    string responseBody = await httpResponse.Content.ReadAsStringAsync();
-                    // Processa os dados recebidos
-                    var musicas = JsonSerializer.Deserialize<List<Music>>(responseBody);
-                    //rtbResponse.Text = musicas.Count.ToString();
-                    //musicas[0].ExibirDetalhesMusica();
-                    strRetorno = musicas[0].ToString();
+                    //string responseBody = await httpResponse.Content.ReadAsStringAsync();
+                    //var musicas = JsonSerializer.Deserialize<List<Music>>(responseBody);
+                    //strRetorno = musicas[1].ToString();
+                    return true;
                 }
                 else
                 {
-                    // A requisição não foi bem-sucedida, exibe o código de status
                     MessageBox.Show($"Falha na requisição. Código de status: {httpResponse.StatusCode}");
+                    return false;
                 }
             }
             catch (HttpRequestException ex)
             {
-                Console.WriteLine($"Ocorreu um erro na requisição: {ex.Message}");
+                MessageBox.Show($"Ocorreu um erro na requisição: {ex.Message}");
             }
         }
-        return strRetorno;
-
+        return false;
     }
 
-    public async Task<string> ConectaApi2Async(string strRetorno)
+    /// <summary>
+    /// Conexão com API teste2
+    /// </summary>
+    /// <param name="strRetorno"></param>
+    /// <returns></returns>
+    public async Task<bool> ConectaApi2Async()
     {
-        strRetorno = string.Empty;
-
         using (HttpClient client = new HttpClient())
         {
             try
             {
-                string strResponse = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
-                strRetorno = strResponse;
+                string strResponse = await client.GetStringAsync(APIHTTP);
+                //caso estiver off não cai como httpexception
+                return true;
             }
             catch (HttpRequestException ex)
             {
-                Console.WriteLine($"Ocorreu um erro na requisição: {ex.Message}");
+                MessageBox.Show($"Falha na requisição. Código de status: {ex.Message}");
+                return false;
             }
 
         }
-        return strRetorno;
     }
 
 

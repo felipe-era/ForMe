@@ -31,6 +31,7 @@
             btnTryHttp = new Button();
             rtbResponse = new RichTextBox();
             btnTryHttp2 = new Button();
+            btnMusicGeneros = new Button();
             SuspendLayout();
             // 
             // btnTryHttp
@@ -61,12 +62,23 @@
             btnTryHttp2.UseVisualStyleBackColor = true;
             btnTryHttp2.Click += btnTryHttp2_Click;
             // 
+            // btnMusicGeneros
+            // 
+            btnMusicGeneros.Location = new Point(183, 12);
+            btnMusicGeneros.Name = "btnMusicGeneros";
+            btnMusicGeneros.Size = new Size(106, 23);
+            btnMusicGeneros.TabIndex = 3;
+            btnMusicGeneros.Text = "Api / Generos";
+            btnMusicGeneros.UseVisualStyleBackColor = true;
+            btnMusicGeneros.Click += btnMusicGeneros_ClickAsync;
+            // 
             // frmMusicas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnMusicGeneros);
             Controls.Add(btnTryHttp2);
             Controls.Add(rtbResponse);
             Controls.Add(btnTryHttp);
@@ -80,5 +92,6 @@
         private Button btnTryHttp;
         private RichTextBox rtbResponse;
         private Button btnTryHttp2;
+        private Button btnMusicGeneros;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using ForMe.Controllers;
 using ForMe.Models;
+using ForMe.Service;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +17,7 @@ namespace ForMe.Views;
 
 public partial class frmMusicas : Form
 {
+
     SongController songController = new SongController();
 
     public frmMusicas()
@@ -25,14 +28,23 @@ public partial class frmMusicas : Form
 
     private async void btnTryHttp_Click(object sender, EventArgs e)
     {
-        string strTmp = songController.ConectaApiAsync("").ToString();
-        rtbResponse.Text = strTmp;
+        bool blnTmp = await songController.ConectaApiAsync();
+        rtbResponse.Text = blnTmp.ToString();
     }
 
-    private void btnTryHttp2_Click(object sender, EventArgs e)
+    private async void btnTryHttp2_Click(object sender, EventArgs e)
     {
-        string strTmp = songController.ConectaApi2Async("").ToString();
-        rtbResponse.Text = strTmp;
+        bool blnTmp = await songController.ConectaApi2Async();
+        rtbResponse.Text = blnTmp.ToString();
 
+
+    }
+
+    private async Task btnMusicGeneros_ClickAsync(object sender, EventArgs e)
+    {
+        if (await songController.ConectaApiAsync())
+        {
+            LinqFilter.
+        }
     }
 }
