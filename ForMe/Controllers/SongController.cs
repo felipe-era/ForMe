@@ -29,8 +29,8 @@ internal class SongController
 
                 if (httpResponse.IsSuccessStatusCode)
                 {
-                    //string responseBody = await httpResponse.Content.ReadAsStringAsync();
-                    //var musicas = JsonSerializer.Deserialize<List<Music>>(responseBody);
+                    string responseBody = await httpResponse.Content.ReadAsStringAsync();
+                    var musicas = JsonSerializer.Deserialize<List<Music>>(responseBody);
                     //strRetorno = musicas[1].ToString();
                     return true;
                 }
@@ -49,7 +49,7 @@ internal class SongController
     }
 
     /// <summary>
-    /// Conexão com API teste2
+    /// Conexão com API teste2- NW?
     /// </summary>
     /// <param name="strRetorno"></param>
     /// <returns></returns>
@@ -71,6 +71,40 @@ internal class SongController
 
         }
     }
+
+    public async Task<string> ConectaApiAsyncString()
+    {
+        string strRetorno = string.Empty;
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                HttpResponseMessage httpResponse = await client.GetAsync(APIHTTP);
+                httpResponse.EnsureSuccessStatusCode(); // Lança uma exceção se a requisição não for bem-sucedida (código de status 2xx)
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    string responseBody = await httpResponse.Content.ReadAsStringAsync();
+                    var musics = JsonSerializer.Deserialize<List<Music>>(responseBody);
+                    //strRetorno = musicas[1].ToString();
+                    strRetorno = musics.ToString();
+                    return strRetorno;
+                }
+                else
+                {
+                    MessageBox.Show($"Falha na requisição. Código de status: {httpResponse.StatusCode}");
+                    return strRetorno;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Ocorreu um erro na requisição: {ex.Message}");
+            }
+        }
+        return strRetorno;
+    }
+
+
 
 
 

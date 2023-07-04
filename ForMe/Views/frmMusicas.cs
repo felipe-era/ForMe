@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ForMe.Filtros;
 
 namespace ForMe.Views;
 
@@ -32,19 +33,17 @@ public partial class frmMusicas : Form
         rtbResponse.Text = blnTmp.ToString();
     }
 
-    private async void btnTryHttp2_Click(object sender, EventArgs e)
+    private void btnTryHttp2_Click(object sender, EventArgs e)
     {
-        bool blnTmp = await songController.ConectaApi2Async();
-        rtbResponse.Text = blnTmp.ToString();
-
+        //var strJson = await songController.ConectaApi2Async().Result;
+        int i = 0;
 
     }
 
-    private async Task btnMusicGeneros_ClickAsync(object sender, EventArgs e)
+    private async void btnMusicGeneros_ClickAsync(object sender, EventArgs e)
     {
-        if (await songController.ConectaApiAsync())
-        {
-            LinqFilter.
-        }
+        var strJson = await songController.ConectaApiAsyncString();
+        int i = 0;
+
     }
 }
