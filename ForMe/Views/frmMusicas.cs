@@ -33,17 +33,18 @@ public partial class frmMusicas : Form
         rtbResponse.Text = blnTmp.ToString();
     }
 
-    private void btnTryHttp2_Click(object sender, EventArgs e)
+    private async void btnTryHttp2_Click(object sender, EventArgs e)
     {
-        //var strJson = await songController.ConectaApi2Async().Result;
+        var strJson = await songController.ConectaApi2Async();
         int i = 0;
-
+        rtbResponse.Text = strJson.ToString();
     }
 
     private async void btnMusicGeneros_ClickAsync(object sender, EventArgs e)
     {
         var strJson = await songController.ConectaApiAsyncString();
         int i = 0;
+        rtbResponse.Text = strJson.ToString();
 
     }
 }
