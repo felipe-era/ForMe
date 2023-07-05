@@ -86,9 +86,7 @@ internal class SongController
                 {
                     string responseBody = await httpResponse.Content.ReadAsStringAsync();
                     var musics = JsonSerializer.Deserialize<List<Music>>(responseBody);
-                    //strRetorno = musicas[1].ToString();
-                    strRetorno = musics.ToString();
-                    return strRetorno;
+                    return responseBody;
                 }
                 else
                 {
