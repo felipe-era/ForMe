@@ -21,13 +21,17 @@ public partial class frmMusicas : Form
 {
 
     SongController songController = new SongController();
-
-
+    //private List<Music> lstMusic;
 
     public frmMusicas()
     {
         InitializeComponent();
     }
+
+
+
+
+
 
 
     private async void btnTryHttp_Click(object sender, EventArgs e)
@@ -51,11 +55,20 @@ public partial class frmMusicas : Form
 
     }
 
-    private async Task btnMusicaGeneros_ClickAsync(object sender, EventArgs e)
+    private async void btnMusicaGeneros_ClickAsync(object sender, EventArgs e)
     {
-        string responseBody = await httpResponse.Content.ReadAsStringAsync();
-        var musicas = JsonSerializer.Deserialize<List<Music>>(responseBody);
-        var strJson = await songController.ConectaApiAsyncString();
-        LinqFilter.FiltraTodosGeneros(strJson);
+        List<Music> lstMusic = JsonSerializer.Deserialize<List<Music>>(await songController.ConectaApiAsyncString());
+        rtbResponse.Text = LinqFilter.FiltraTodosGeneros(lstMusic);
+        rtbResponse.Text = LinqFilter.FiltroJson(lstMusic);
+
     }
+
+    private void frmMusicas_Load(object sender, EventArgs e)
+    {
+        //frmMusicas_LoadAsync(sender, e);
+    }
+
+  
+
+
 }
