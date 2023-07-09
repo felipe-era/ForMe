@@ -15,6 +15,5 @@ internal class LinqFilter
 
         MessageBox.Show($"{todosGeneros}");
 
-
     }
 }

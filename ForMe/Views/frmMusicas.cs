@@ -1,4 +1,5 @@
 ﻿using ForMe.Controllers;
+using ForMe.Filtros;
 using ForMe.Models;
 using ForMe.Service;
 using System.Text.Json;
@@ -20,6 +21,8 @@ public partial class frmMusicas : Form
 {
 
     SongController songController = new SongController();
+
+
 
     public frmMusicas()
     {
@@ -46,5 +49,13 @@ public partial class frmMusicas : Form
         int i = 0;
         rtbResponse.Text = strJson.ToString();
 
+    }
+
+    private async Task btnMusicaGeneros_ClickAsync(object sender, EventArgs e)
+    {
+        string responseBody = await httpResponse.Content.ReadAsStringAsync();
+        var musicas = JsonSerializer.Deserialize<List<Music>>(responseBody);
+        var strJson = await songController.ConectaApiAsyncString();
+        LinqFilter.FiltraTodosGeneros(strJson);
     }
 }
