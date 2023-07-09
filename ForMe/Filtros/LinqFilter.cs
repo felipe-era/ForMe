@@ -7,13 +7,31 @@ using System.Threading.Tasks;
 
 namespace ForMe.Filtros;
 
+
 internal class LinqFilter
 {
-    public static void FiltraTodosGeneros(List<Music> musics)
+    public static string FiltraTodosGeneros(List<Music> musics)
     {
-        var todosGeneros = musics.Select(generos => generos.Genero).Distinct().ToList();
+        string strTmp = string.Empty;
+        var todosGeneros = musics. Select(generos => generos.Genero).Distinct().ToList();
+        foreach (var linhaGenero in todosGeneros)
+        {
+            strTmp +=  linhaGenero + "\n";
 
-        MessageBox.Show($"{todosGeneros}");
-
+        }
+        return strTmp;
     }
+    public static string FiltroJson(List<Music> musics)
+    {
+        string strTmp = string.Empty;
+        var todosGeneros = musics;//. Select( generos => generos.Genero).Distinct().ToList();
+
+        for (int i = 0; i < todosGeneros.Count; i++)
+        {
+            strTmp += musics[i] + "\n";
+        }
+        
+        return strTmp;
+    }
+
 }

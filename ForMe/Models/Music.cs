@@ -26,5 +26,16 @@ internal class Music
         MessageBox.Show($" {Nome}-{Artista}-{Duracao}-{Genero} ");
     }
 
+    public List<string?> GetDetalhesMusicas()
+    {
+        List<string?> detalhes = new List<string?>
+        {
+            Nome,
+            Artista,
+            Duracao?.ToString(),
+            Genero
+        };
 
+        return detalhes;
+    }
 }

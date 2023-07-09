@@ -99,6 +99,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmMusicas";
             Text = "frmMusicas";
+            Load += frmMusicas_Load;
             ResumeLayout(false);
         }
 

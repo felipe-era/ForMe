@@ -31,7 +31,7 @@ internal class SongController
                 {
                     string responseBody = await httpResponse.Content.ReadAsStringAsync();
                     var musicas = JsonSerializer.Deserialize<List<Music>>(responseBody);
-                    //strRetorno = musicas[1].ToString();
+                    //strRetorno = musicas[1].ToString();'
                     return true;
                 }
                 else
@@ -59,7 +59,7 @@ internal class SongController
         {
             try
             {
-                string strResponse = await client.GetStringAsync(APIHTTP);
+                var strResponse = await client.GetStringAsync(APIHTTP);
                 //caso estiver off não cai como httpexception
                 return true;
             }
@@ -74,6 +74,7 @@ internal class SongController
 
     public async Task<string> ConectaApiAsyncString()
     {
+
         string strRetorno = string.Empty;
         using (HttpClient client = new HttpClient())
         {
@@ -101,6 +102,40 @@ internal class SongController
         }
         return strRetorno;
     }
+
+    public static async Task<List<Music>> JsonMusicas()
+    {
+        List<Music> lstMusic = new List<Music>();
+        string strRetorno = string.Empty;
+
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                HttpResponseMessage httpResponse = await client.GetAsync(APIHTTP);
+                httpResponse.EnsureSuccessStatusCode(); // Lança uma exceção se a requisição não for bem-sucedida (código de status 2xx)
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    string responseBody = await httpResponse.Content.ReadAsStringAsync();
+                    lstMusic = JsonSerializer.Deserialize<List<Music>>(responseBody);
+                    return lstMusic;
+                }
+                else
+                {
+                    MessageBox.Show($"Falha na requisição. Código de status: {httpResponse.StatusCode}");
+                    return lstMusic;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Ocorreu um erro na requisição: {ex.Message}");
+            }
+        }
+
+        return lstMusic;
+    }
+
 
 
 
