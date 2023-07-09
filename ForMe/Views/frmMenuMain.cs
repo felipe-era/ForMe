@@ -24,4 +24,15 @@ public partial class frmMenuMain : Form
         frmMusicas frmMusicas = new frmMusicas();
         frmMusicas.ShowDialog();
     }
+
+    private void toolStripMenuItem3_Click(object sender, EventArgs e)
+    {
+        frmMusicas frmMsc = new frmMusicas();
+        frmMsc.TopLevel = false;
+        frmMsc.Dock = DockStyle.Fill;
+        panel1.Controls.Clear();
+
+        panel1.Controls.Add(frmMsc);
+        frmMsc.Show();
+    }
 }
