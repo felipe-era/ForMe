@@ -39,5 +39,8 @@ public partial class frmMenuMain : Form
         frmMsc.Show();
     }
 
- 
+    private void xToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Environment.Exit(0);
+    }
 }

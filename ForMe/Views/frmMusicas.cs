@@ -59,7 +59,6 @@ public partial class frmMusicas : Form
     {
         List<Music> lstMusic = JsonSerializer.Deserialize<List<Music>>(await songController.ConectaApiAsyncString());
         rtbResponse.Text = LinqFilter.FiltraTodosGeneros(lstMusic);
-        rtbResponse.Text = LinqFilter.FiltroJson(lstMusic);
 
     }
 
@@ -68,7 +67,20 @@ public partial class frmMusicas : Form
         //frmMusicas_LoadAsync(sender, e);
     }
 
-  
+    private async void btnOrdemNome_Click(object sender, EventArgs e)
+    {
+        List<Music> lstMusic = JsonSerializer.Deserialize<List<Music>>(await songController.ConectaApiAsyncString());
+        rtbResponse.Text = LinqFilter.FiltroOrdemNome(lstMusic);
+    }
+
+    private async void button1_Click(object sender, EventArgs e)
+    {
+        List<Music> lstMusic = JsonSerializer.Deserialize<List<Music>>(await songController.ConectaApiAsyncString());
+        
+        rtbResponse.Text = LinqFilter.FiltrarMusicasArtista(lstMusic, txtTexto.Text);
+    }
+
+
 
 
 }

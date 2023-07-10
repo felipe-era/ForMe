@@ -33,6 +33,9 @@
             btnTryHttp2 = new Button();
             btnMusicTudo = new Button();
             btnMusicaGeneros = new Button();
+            btnOrdemNome = new Button();
+            button1 = new Button();
+            txtTexto = new TextBox();
             SuspendLayout();
             // 
             // btnTryHttp
@@ -85,12 +88,42 @@
             btnMusicaGeneros.UseVisualStyleBackColor = true;
             btnMusicaGeneros.Click += btnMusicaGeneros_ClickAsync;
             // 
+            // btnOrdemNome
+            // 
+            btnOrdemNome.Location = new Point(347, 12);
+            btnOrdemNome.Name = "btnOrdemNome";
+            btnOrdemNome.Size = new Size(106, 23);
+            btnOrdemNome.TabIndex = 5;
+            btnOrdemNome.Text = "Api / Ord. Nome";
+            btnOrdemNome.UseVisualStyleBackColor = true;
+            btnOrdemNome.Click += btnOrdemNome_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(347, 40);
+            button1.Name = "button1";
+            button1.Size = new Size(106, 23);
+            button1.TabIndex = 6;
+            button1.Text = "Api / Filtro Musicas";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // txtTexto
+            // 
+            txtTexto.Location = new Point(465, 40);
+            txtTexto.Name = "txtTexto";
+            txtTexto.Size = new Size(100, 23);
+            txtTexto.TabIndex = 7;
+            // 
             // frmMusicas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(592, 404);
+            Controls.Add(txtTexto);
+            Controls.Add(button1);
+            Controls.Add(btnOrdemNome);
             Controls.Add(btnMusicaGeneros);
             Controls.Add(btnMusicTudo);
             Controls.Add(btnTryHttp2);
@@ -101,6 +134,7 @@
             Text = "frmMusicas";
             Load += frmMusicas_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -110,5 +144,8 @@
         private Button btnTryHttp2;
         private Button btnMusicTudo;
         private Button btnMusicaGeneros;
+        private Button btnOrdemNome;
+        private Button button1;
+        private TextBox txtTexto;
     }
 }

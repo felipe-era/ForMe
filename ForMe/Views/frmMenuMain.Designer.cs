@@ -64,6 +64,7 @@
             toolStripSeparator5 = new ToolStripSeparator();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
+            xToolStripMenuItem = new ToolStripMenuItem();
             msMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,7 +80,7 @@
             // 
             // msMenu
             // 
-            msMenu.Items.AddRange(new ToolStripItem[] { tspMusicas, toolStripTextBox1, fileToolStripMenuItem, editToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem });
+            msMenu.Items.AddRange(new ToolStripItem[] { tspMusicas, toolStripTextBox1, fileToolStripMenuItem, editToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem, xToolStripMenuItem });
             msMenu.Location = new Point(0, 0);
             msMenu.Name = "msMenu";
             msMenu.Size = new Size(764, 24);
@@ -314,6 +315,14 @@
             panel1.Size = new Size(684, 420);
             panel1.TabIndex = 3;
             // 
+            // xToolStripMenuItem
+            // 
+            xToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
+            xToolStripMenuItem.Name = "xToolStripMenuItem";
+            xToolStripMenuItem.Size = new Size(26, 20);
+            xToolStripMenuItem.Text = "X";
+            xToolStripMenuItem.Click += xToolStripMenuItem_Click;
+            // 
             // frmMenuMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -372,5 +381,6 @@
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripTextBox toolStripTextBox1;
+        private ToolStripMenuItem xToolStripMenuItem;
     }
 }

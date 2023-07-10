@@ -13,24 +13,37 @@ internal class LinqFilter
     public static string FiltraTodosGeneros(List<Music> musics)
     {
         string strTmp = string.Empty;
-        var todosGeneros = musics. Select(generos => generos.Genero).Distinct().ToList();
+        var todosGeneros = musics.Select(generos => generos.Genero).Distinct().ToList();
         foreach (var linhaGenero in todosGeneros)
         {
-            strTmp +=  linhaGenero + "\n";
+            strTmp += linhaGenero + "\n";
 
         }
         return strTmp;
     }
-    public static string FiltroJson(List<Music> musics)
+    public static string FiltroOrdemNome(List<Music> musics)
     {
         string strTmp = string.Empty;
-        var todosGeneros = musics;//. Select( generos => generos.Genero).Distinct().ToList();
+        var todosGeneros = musics.OrderBy(musics => musics.Artista)
+                                 .Select(musics => musics.Artista)
+                                 .Distinct().ToList();
+        foreach (var linhaOrdenada in todosGeneros)
+        {
+            strTmp += linhaOrdenada + "\n";
 
+        }
+        return strTmp;
+    }
+    public static string FiltrarMusicasArtista(List<Music> musics, string pMusicaPesquisa)
+    {
+        string strTmp = string.Empty;
+        var todosGeneros = musics.Where(musics => musics.Artista!.Equals(pMusicaPesquisa)).ToList();
+        
         for (int i = 0; i < todosGeneros.Count; i++)
         {
-            strTmp += musics[i] + "\n";
+            strTmp += todosGeneros[i].Artista + " -" + todosGeneros[i].Nome + " - " + todosGeneros[i].Duracao + "\n"; 
         }
-        
+       
         return strTmp;
     }
 
